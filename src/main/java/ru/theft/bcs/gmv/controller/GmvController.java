@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.theft.bcs.gmv.model.Gmv;
 import ru.theft.bcs.gmv.service.GmvService;
-import ru.theft.bcs.util.DataService;
+import ru.theft.bcs.core.DataService;
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ public class GmvController {
     }
 
     @GetMapping("/load")
-    public void loadToDb() {
-        dataService.loadTestDataInDb();
+    public void load() {
+        dataService.loadGmvDataInDb();
     }
 
     @GetMapping("/{id}")

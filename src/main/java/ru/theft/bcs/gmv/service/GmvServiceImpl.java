@@ -18,6 +18,7 @@ public class GmvServiceImpl implements GmvService {
 
     @Override
     public List<Gmv> getAll() {
+        log.info("Quantity gmv: {}", gmvRepository.findAll().size());
         return gmvRepository.findAll();
     }
 

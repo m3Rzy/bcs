@@ -7,101 +7,208 @@
 	},
 	"item": [
 		{
-			"name": "load data in db",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{urll}}/gmv/load",
-					"host": [
-						"{{urll}}"
-					],
-					"path": [
-						"gmv",
-						"load"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAll",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/gmv",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"gmv"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getById with 404",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/gmv/6",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"gmv",
-						"6"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add new GMV",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Бизнес 1№\",\r\n    \"amount\": \"50.5\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "gmv",
+			"item": [
+				{
+					"name": "load data in db",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urll}}/gmv/load",
+							"host": [
+								"{{urll}}"
+							],
+							"path": [
+								"gmv",
+								"load"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{url}}/gmv",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"gmv"
-					]
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById with 404",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/gmv/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new GMV",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Бизнес 1№\",\r\n    \"amount\": \"50.5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/gmv/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv",
+								"6"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "getById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/gmv/6",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"gmv",
-						"6"
-					]
+			"name": "waste",
+			"item": [
+				{
+					"name": "load data in db",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/waste/load",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste",
+								"load"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById with 404",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/waste/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new GMV Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Трата 1№\",\r\n    \"symbol\": \"%\",\r\n    \"amount\": \"5.5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/waste/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [

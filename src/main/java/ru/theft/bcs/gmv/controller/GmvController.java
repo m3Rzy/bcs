@@ -1,6 +1,7 @@
 package ru.theft.bcs.gmv.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.theft.bcs.gmv.model.Gmv;
 import ru.theft.bcs.gmv.service.GmvService;
@@ -19,26 +20,31 @@ public class GmvController {
     private UserService userService;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<Gmv> readAllGmv() {
         return gmvService.getAll();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Gmv readGmv(@PathVariable Long id) {
         return gmvService.getById(id);
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public Gmv addGmv(@RequestHeader(header) Long userId, @RequestBody Gmv gmv) {
         return gmvService.add(userId, gmv);
     }
 
     @DeleteMapping
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public void deleteGmv(@RequestBody Gmv gmv) {
         gmvService.delete(gmv);
     }
 
     @GetMapping("/user")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<Gmv> readGmvByUserId(@RequestHeader(header) Long userId) {
         return gmvService.getAll()
                 .stream()

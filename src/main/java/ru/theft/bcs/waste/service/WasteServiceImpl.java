@@ -3,6 +3,7 @@ package ru.theft.bcs.waste.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.theft.bcs.gmv.service.GmvService;
 import ru.theft.bcs.util.exception.NotFoundException;
 import ru.theft.bcs.waste.model.Waste;
 import ru.theft.bcs.waste.repository.WasteRepository;
@@ -15,6 +16,7 @@ import java.util.List;
 public class WasteServiceImpl implements WasteService {
 
     private WasteRepository wasteRepository;
+    private GmvService gmvService;
 
     @Override
     public List<Waste> getAll() {
@@ -29,7 +31,8 @@ public class WasteServiceImpl implements WasteService {
     }
 
     @Override
-    public Waste add(Waste waste) {
+    public Waste add(Long gmvId, Waste waste) {
+        waste.setGmv(gmvService.getById(gmvId));
         log.info("{} has been created.", waste);
         return wasteRepository.save(waste);
     }

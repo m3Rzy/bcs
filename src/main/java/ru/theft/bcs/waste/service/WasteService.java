@@ -9,7 +9,7 @@ public interface WasteService {
 
     Waste getById(Long id);
 
-    Waste add(Waste waste);
+    Waste add(Long gmvId, Waste waste);
 
     void delete(Waste waste);
 }

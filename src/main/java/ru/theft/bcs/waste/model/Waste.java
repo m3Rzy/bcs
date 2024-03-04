@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.theft.bcs.gmv.model.Gmv;
 
 @Data
 @Entity
@@ -22,4 +23,7 @@ public class Waste {
     private char symbol;
     @Column(name = "amount", nullable = false)
     private double amount;
+    @ManyToOne
+    @JoinColumn(name = "gmv_id", referencedColumnName = "id")
+    private Gmv gmv;
 }

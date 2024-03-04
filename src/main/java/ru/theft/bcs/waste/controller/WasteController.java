@@ -11,6 +11,8 @@ import java.util.List;
 @RequestMapping("/waste")
 @AllArgsConstructor
 public class WasteController {
+
+    public static final String header = "X-Sharer-Gmv-Id";
     private WasteService wasteService;
 
     @GetMapping
@@ -24,8 +26,8 @@ public class WasteController {
     }
 
     @PostMapping
-    public Waste addWaste(@RequestBody Waste waste) {
-        return wasteService.add(waste);
+    public Waste addWaste(@RequestHeader(header) Long gmvId, @RequestBody Waste waste) {
+        return wasteService.add(gmvId, waste);
     }
 
     @DeleteMapping

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.theft.bcs.gmv.model.Gmv;
 import ru.theft.bcs.gmv.service.GmvService;
-import ru.theft.bcs.core.DataService;
 
 import java.util.List;
 
@@ -14,19 +13,11 @@ import java.util.List;
 public class GmvController {
 
     public static final String header = "X-Sharer-User-Id";
-
-    private DataService dataService;
     private GmvService gmvService;
-
 
     @GetMapping
     public List<Gmv> readAllGmv() {
         return gmvService.getAll();
-    }
-
-    @GetMapping("/load")
-    public void load() {
-        dataService.loadGmvDataInDb();
     }
 
     @GetMapping("/{id}")
@@ -42,10 +33,5 @@ public class GmvController {
     @DeleteMapping
     public void deleteGmv(@RequestBody Gmv gmv) {
         gmvService.delete(gmv);
-    }
-
-    @GetMapping("/v1/{id}")
-    public Gmv getIncomeMinusExpenses(@PathVariable Long id) {
-        return gmvService.incomeMinusExpenses(id);
     }
 }

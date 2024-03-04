@@ -12,6 +12,4 @@ public interface GmvService {
     Gmv add(Long userId, Gmv gmv);
 
     void delete(Gmv gmv);
-
-    Gmv incomeMinusExpenses(Long id);
 }

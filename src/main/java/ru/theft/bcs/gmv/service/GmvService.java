@@ -9,7 +9,7 @@ public interface GmvService {
 
     Gmv getById(Long id);
 
-    Gmv add(Gmv gmv);
+    Gmv add(Long userId, Gmv gmv);
 
     void delete(Gmv gmv);
 

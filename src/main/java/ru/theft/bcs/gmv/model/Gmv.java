@@ -2,6 +2,7 @@ package ru.theft.bcs.gmv.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ru.theft.bcs.user.model.User;
 
 @Entity
 @Table(name = "gmv")
@@ -17,4 +18,7 @@ public class Gmv {
     private String title;
     @Column(name = "amount", nullable = false)
     private double amount;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.theft.bcs.gmv.model.Gmv;
 import ru.theft.bcs.gmv.repository.GmvRepository;
+import ru.theft.bcs.user.service.UserService;
 import ru.theft.bcs.util.exception.NotFoundException;
 import ru.theft.bcs.waste.model.Waste;
 import ru.theft.bcs.waste.service.WasteService;
@@ -18,6 +19,7 @@ public class GmvServiceImpl implements GmvService {
 
     private GmvRepository gmvRepository;
     private WasteService wasteService;
+    private UserService userService;
 
     @Override
     public List<Gmv> getAll() {
@@ -32,7 +34,8 @@ public class GmvServiceImpl implements GmvService {
     }
 
     @Override
-    public Gmv add(Gmv gmv) {
+    public Gmv add(Long userId, Gmv gmv) {
+        gmv.setUser(userService.getById(userId));
         log.info("{} has been created.", gmv);
         return gmvRepository.save(gmv);
     }

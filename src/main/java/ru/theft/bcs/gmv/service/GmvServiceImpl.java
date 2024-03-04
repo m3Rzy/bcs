@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.theft.bcs.gmv.model.Gmv;
 import ru.theft.bcs.gmv.repository.GmvRepository;
 import ru.theft.bcs.user.service.UserService;
+import ru.theft.bcs.util.exception.BadRequestException;
 import ru.theft.bcs.util.exception.NotFoundException;
 
 import java.util.List;
@@ -32,7 +33,17 @@ public class GmvServiceImpl implements GmvService {
 
     @Override
     public Gmv add(Long userId, Gmv gmv) {
+
+        if (gmv.getTitle().isBlank() || gmv.getTitle().isEmpty()) {
+            throw new BadRequestException("Gmv title can't be empty or blank.");
+        }
+
+        if (gmv.getAmount() <= (double) 0) {
+            throw new BadRequestException("Gmv amount can't equal 0 or less.");
+        }
+
         gmv.setUser(userService.getById(userId));
+
         log.info("{} has been created.", gmv);
         return gmvRepository.save(gmv);
     }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.theft.bcs.gmv.service.GmvService;
+import ru.theft.bcs.util.exception.BadRequestException;
 import ru.theft.bcs.util.exception.NotFoundException;
 import ru.theft.bcs.waste.model.Waste;
 import ru.theft.bcs.waste.repository.WasteRepository;
@@ -33,6 +34,15 @@ public class WasteServiceImpl implements WasteService {
     @Override
     public Waste add(Long gmvId, Waste waste) {
         waste.setGmv(gmvService.getById(gmvId));
+
+        if (waste.getTitle().isBlank() || waste.getTitle().isEmpty()) {
+            throw new BadRequestException("Waste title can't be empty or blank.");
+        }
+
+        if (waste.getAmount() <= (double) 0) {
+            throw new BadRequestException("Waste amount can't equal 0 or less.");
+        }
+
         log.info("{} has been created.", waste);
         return wasteRepository.save(waste);
     }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.theft.bcs.user.model.User;
 import ru.theft.bcs.user.repository.UserRepository;
+import ru.theft.bcs.util.exception.BadRequestException;
 import ru.theft.bcs.util.exception.NotFoundException;
 
 import java.util.List;
@@ -24,19 +25,33 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getById(Long id) {
+        log.info("User got by {} id.", id);
         return userRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("User doesn't exist by " + id + " id."));
+                .orElseThrow(() -> new NotFoundException("User has no found by " + id + " id."));
     }
 
     @Override
     public User add(User user) {
-        log.info("{} has been created.", user);
+
+        if (user.getLogin().isEmpty() || user.getLogin().isBlank()) {
+            throw new BadRequestException("Login can't be empty or blank.");
+        }
+
+        if (user.getPassword().isBlank() || user.getPassword().isEmpty()) {
+            throw new BadRequestException("Password can't be empty or blank.");
+        }
+
+        if (user.getPassword().equals(user.getLogin())) {
+            throw new BadRequestException("The password and login can't be equal.");
+        }
+
+        log.info("{} was created successfully.", user);
         return userRepository.save(user);
     }
 
     @Override
     public void delete(User user) {
         userRepository.delete(getById(user.getId()));
-        log.info("{} has been deleted.", user);
+        log.info("{} was deleted successfully.", user);
     }
 }

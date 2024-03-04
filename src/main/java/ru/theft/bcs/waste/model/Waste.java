@@ -19,8 +19,6 @@ public class Waste {
     private long id;
     @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "symbol", nullable = false)
-    private char symbol;
     @Column(name = "amount", nullable = false)
     private double amount;
     @ManyToOne

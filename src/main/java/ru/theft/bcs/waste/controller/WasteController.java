@@ -2,10 +2,12 @@ package ru.theft.bcs.waste.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.theft.bcs.gmv.service.GmvService;
 import ru.theft.bcs.waste.model.Waste;
 import ru.theft.bcs.waste.service.WasteService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/waste")
@@ -14,6 +16,7 @@ public class WasteController {
 
     public static final String header = "X-Sharer-Gmv-Id";
     private WasteService wasteService;
+    private GmvService gmvService;
 
     @GetMapping
     public List<Waste> readAllWastes() {
@@ -33,5 +36,13 @@ public class WasteController {
     @DeleteMapping
     public void deleteWaste(@RequestBody Waste waste) {
         wasteService.delete(waste);
+    }
+
+    @GetMapping("/gmv")
+    public List<Waste> readWastesByGmvId(@RequestHeader(header) Long gmvId) {
+        return wasteService.getAll()
+                .stream()
+                .filter(gmv -> gmvService.getById(gmvId).getId() == gmvId)
+                .collect(Collectors.toList());
     }
 }

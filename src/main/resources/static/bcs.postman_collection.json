@@ -7,66 +7,233 @@
 	},
 	"item": [
 		{
-			"name": "gmv",
+			"name": "user",
 			"item": [
 				{
-					"name": "load data in db",
+					"name": "getById User1 404",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urll}}/gmv/load",
-							"host": [
-								"{{urll}}"
-							],
-							"path": [
-								"gmv",
-								"load"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/gmv",
+							"raw": "{{url}}/user/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"gmv"
+								"user",
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "getById with 404",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/gmv/6",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"gmv",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add new GMV",
+					"name": "Add User1 200",
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"demeiz\",\r\n    \"password\": \"123321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User2 200",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"theft\",\r\n    \"password\": \"321123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User3 400 - user already exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"theft\",\r\n    \"password\": \"321123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User4 400 - login & password equals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"111\",\r\n    \"password\": \"111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User5 400 - login blank",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"\",\r\n    \"password\": \"111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User5 400 - password blank",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"123321\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById 200",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers 200",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gmv",
+			"item": [
+				{
+					"name": "Add gmv1 user1 200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-User-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"Бизнес 1№\",\r\n    \"amount\": \"50.5\"\r\n}",
@@ -89,18 +256,187 @@
 					"response": []
 				},
 				{
-					"name": "getById",
+					"name": "Add gmv2 user1 200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-User-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Бизнес 2№\",\r\n    \"amount\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add gmv2 user1 400 - title blank",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-User-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"amount\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add gmv2 user1 400 - amount less or equals 0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-User-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"тестовый бизнес 1\",\r\n    \"amount\": -1.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add gmv2 user100 404 - user not found",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-User-Id",
+								"value": "100",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"тестовый бизнес 1\",\r\n    \"amount\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById 200",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/gmv/6",
+							"raw": "{{url}}/gmv/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"gmv",
-								"6"
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll 200",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllGmv by userId 1 - 200",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Sharer-User-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/gmv/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gmv",
+								"user"
 							]
 						}
 					},
@@ -112,66 +448,19 @@
 			"name": "waste",
 			"item": [
 				{
-					"name": "load data in db",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/waste/load",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"waste",
-								"load"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/waste",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"waste"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getById with 404",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/waste/6",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"waste",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add new GMV Copy",
+					"name": "Add waste1 to gmv1 200",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Трата 1№\",\r\n    \"symbol\": \"%\",\r\n    \"amount\": \"5.5\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Трата 1№\",\r\n    \"amount\": \"10\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -191,7 +480,167 @@
 					"response": []
 				},
 				{
-					"name": "getById",
+					"name": "Add waste2 to gmv1 200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Трата 1№\",\r\n    \"amount\": 20.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add waste3 to gmv2 200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Трата 1№\",\r\n    \"amount\": 20.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add waste5 to gmv2 400 - title blank",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"amount\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add waste5 to gmv2 400 - amount less or 0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"213231\",\r\n    \"amount\": -1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add waste4 to gmv100 404",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "100",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Трата 1№\",\r\n    \"amount\": 20.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById 200",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -203,6 +652,47 @@
 							"path": [
 								"waste",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll 200",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/waste",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllWastes by gmvId 1 - 200 Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Sharer-Gmv-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/waste/gmv",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"waste",
+								"gmv"
 							]
 						}
 					},

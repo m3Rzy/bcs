@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.theft.bcs.gmv.model.Gmv;
 import ru.theft.bcs.gmv.repository.GmvRepository;
-import ru.theft.bcs.waste.model.Waste;
 import ru.theft.bcs.waste.repository.WasteRepository;
 
 import java.util.List;

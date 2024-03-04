@@ -41,4 +41,9 @@ public class GmvController {
     public void deleteGmv(@RequestBody Gmv gmv) {
         gmvService.delete(gmv);
     }
+
+    @GetMapping("/v1/{id}")
+    public Gmv getIncomeMinusExpenses(@PathVariable Long id) {
+        return gmvService.incomeMinusExpenses(id);
+    }
 }
